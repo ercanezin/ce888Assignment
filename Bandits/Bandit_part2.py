@@ -98,7 +98,7 @@ class BootstrapThompson(Bandit):
 
 # number of trials
 n_trials = 1000
-t_max = 1000
+t_max = 100
 
 # And three actions
 
@@ -131,7 +131,7 @@ def action_5():
 
 
 def action_6():
-    return np.random.choice([1, 0], p=[0.95, 0.05])
+    return np.random.choice([1, 0], p=[0.5, 0.5])
 
 
 def action_7():
@@ -140,9 +140,9 @@ def action_7():
 
 rewards2 = [action_0, action_1]
 
-rewards5 = [action_0, action_1, action_2, action_3(), action_4()]
+rewards5 = [action_0, action_1, action_2, action_3, action_4]
 
-rewards8 = [action_0, action_1, action_2, action_3(), action_4(), action_5(), action_6(), action_7()]
+rewards8 = [action_0, action_1, action_2, action_3, action_4, action_5, action_6, action_7]
 
 rewards = rewards2
 
@@ -188,6 +188,6 @@ for b in bandits:
 
     axes = sns.tsplot(time="Step", value="Cumulative Regret",
                       unit="trial", condition="Algorithm", data=df)
-    axes.set_ylim([0, 40])
+
     plt.savefig(b[0] + "_time:_" + str(datetime.now().time()) + "_tmax_" + str(t_max) + "_trial_" + str(trial) + ".pdf",
                 bbox_inches='tight')
